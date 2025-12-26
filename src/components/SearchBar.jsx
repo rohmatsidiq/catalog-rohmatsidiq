@@ -3,7 +3,7 @@ import { SearchOutlined } from "@ant-design/icons";
 
 export default function SearchBar({ value, onChange }) {
   return (
-    <div className="mb-6 max-w-md mx-auto">
+    <div className="max-w-md mx-auto">
       <Input
         size="large"
         placeholder="Cari produk..."
