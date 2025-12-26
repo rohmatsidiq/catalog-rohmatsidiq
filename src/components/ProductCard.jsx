@@ -8,11 +8,9 @@ export default function ProductCard({ book }) {
     <div className="relative">
       <Link to={`/book/${book.id}`}>
         <div className="bg-white p-8 rounded-3xl hover:shadow-xl">
-          <img
-            alt={book.title}
-            src={book.thumbnail}
-            className="h-48 object-cover"
-          />
+          <div className="flex justify-center items-center">
+            <img alt={book.title} src={book.thumbnail} className="h-48" />
+          </div>
           <h3 className="font-semibold text-lg line-clamp-1">{book.title}</h3>
 
           <div className="mt-3 flex items-center justify-between">
