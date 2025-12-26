@@ -22,7 +22,7 @@ export default function ProductCard({ book }) {
       <div className="absolute top-4 right-4">
         <div className="flex gap-2">
           <div
-            className="bg-white border border-gray-400 text-gray-400 hover:border-teal-600 hover:text-teal-600 p-2 rounded-full cursor-pointer"
+            className="bg-white border border-gray-400 text-gray-400 hover:border-orange-600 hover:text-orange-600 p-2 rounded-full cursor-pointer"
             onClick={() => {
               message.success("Berhasil menambahkan keranjang");
             }}
@@ -30,7 +30,7 @@ export default function ProductCard({ book }) {
             <FiShoppingCart />
           </div>
           <div
-            className="bg-white border border-gray-400 text-gray-400 hover:border-teal-600 hover:text-teal-600 p-2 rounded-full cursor-pointer"
+            className="bg-white border border-gray-400 text-gray-400 hover:border-orange-600 hover:text-orange-600 p-2 rounded-full cursor-pointer"
             onClick={() => {
               message.success("Berhasil menambahkan produk favorit");
             }}

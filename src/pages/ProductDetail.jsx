@@ -84,7 +84,12 @@ export default function ProductDetail() {
             ))}
           </div>
           <div className="mt-5 shadow-xl rounded-2xl p-8 bg-white">
-            <Button type="primary" size="large" className="w-full">
+            <Button
+              variant="solid"
+              color="orange"
+              size="large"
+              className="w-full"
+            >
               Add to cart
             </Button>
           </div>
