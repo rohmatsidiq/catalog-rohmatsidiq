@@ -3,7 +3,7 @@ import { fetchBooks } from "../services/bookService";
 import SearchBar from "../components/SearchBar";
 import EmptyState from "../components/EmptyState";
 import ProductGrid from "../components/ProductGrid";
-import { Spin } from "antd";
+import Loading from "../components/Loading";
 
 export default function Catalog() {
   const [books, setBooks] = useState([]);
@@ -27,11 +27,7 @@ export default function Catalog() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="flex justify-center py-20">
-        <Spin size="large" />
-      </div>
-    );
+    return <Loading />;
   }
 
   const filteredBooks = books.filter((book) =>

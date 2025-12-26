@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchBookById } from "../services/bookService";
-import { Button, Divider, Rate, Spin, Tag } from "antd";
+import { Button, Divider, Rate, Tag } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import ReviewGrid from "../components/ReviewGrid";
-import { FaRegHeart } from "react-icons/fa";
 import AddToCartCard from "../components/AddToCartCard";
+import Loading from "../components/Loading";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -30,11 +30,7 @@ export default function ProductDetail() {
   }, [id]);
 
   if (loading) {
-    return (
-      <div className="flex justify-center py-20">
-        <Spin size="large" />
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
