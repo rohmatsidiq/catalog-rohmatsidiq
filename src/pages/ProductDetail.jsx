@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchBookById } from "../services/bookService";
-import { Button, Divider, Rate, Spin } from "antd";
+import { Button, Divider, Rate, Spin, Tag } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import ReviewGrid from "../components/ReviewGrid";
 
@@ -12,12 +12,20 @@ export default function ProductDetail() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchBookById(id)
-      .then(setBook)
-      .finally(() => setLoading(false));
-  }, [id]);
+    const loadBook = async () => {
+      try {
+        setLoading(true);
+        const data = await fetchBookById(id);
+        setBook(data);
+      } catch (error) {
+        console.error("Gagal mengambil detail buku:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  console.log(book);
+    loadBook();
+  }, [id]);
 
   if (loading) {
     return (
@@ -33,6 +41,7 @@ export default function ProductDetail() {
         icon={<ArrowLeftOutlined />}
         onClick={() => navigate(-1)}
         className="mb-6"
+        type="link"
       >
         Kembali
       </Button>
@@ -46,23 +55,46 @@ export default function ProductDetail() {
 
         <div>
           <h1 className="text-3xl font-bold mb-2">{book.title}</h1>
-
           <Rate disabled allowHalf defaultValue={book.rating} />
-
-          <p className="text-gray-600 mt-4">{book.description}</p>
-
-          <p className="text-2xl font-semibold text-teal-600 mt-6">
-            ${book.price}
-          </p>
-
-          <p className="mt-2 text-sm text-gray-500">Stok: {book.stock}</p>
+          <div className="mt-4">
+            <p className="text-2xl font-semibold text-teal-600">
+              ${book.price}
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 my-5">
+            <p className="text-sm">
+              Stok: <b>{book.stock}</b>
+            </p>
+            <p className="text-sm">
+              Brand: <b>{book.brand}</b>
+            </p>
+            <p className="text-sm">
+              Category: <b>{book.category}</b>
+            </p>
+          </div>
+          <div className="">
+            <p className="text-gray-600">{book.description}</p>
+          </div>
+          <div className="mt-5">
+            Tags:{" "}
+            {book.tags.map((e, i) => (
+              <Tag key={i} color={"cyan"} variant="filled">
+                {e}
+              </Tag>
+            ))}
+          </div>
+          <div className="mt-5 shadow-xl rounded-2xl p-8 bg-white">
+            <Button type="primary" size="large" className="w-full">
+              Add to cart
+            </Button>
+          </div>
         </div>
       </div>
 
       <Divider />
 
       <h3 className="text-2xl">Review</h3>
-      <ReviewGrid />
+      <ReviewGrid reviews={book.reviews} />
     </div>
   );
 }
