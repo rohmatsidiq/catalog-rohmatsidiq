@@ -40,7 +40,7 @@ export default function Catalog() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between w-full items-center gap-3">
+      <div className="flex justify-between w-full items-center gap-3 mb-3">
         <h1 className="text-3xl font-bold text-center mb-6">Catalog</h1>
 
         <div>
