@@ -4,6 +4,8 @@ import { fetchBookById } from "../services/bookService";
 import { Button, Divider, Rate, Spin, Tag } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import ReviewGrid from "../components/ReviewGrid";
+import { FaRegHeart } from "react-icons/fa";
+import AddToCartCard from "../components/AddToCartCard";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -83,16 +85,7 @@ export default function ProductDetail() {
               </Tag>
             ))}
           </div>
-          <div className="mt-5 shadow-xl rounded-2xl p-8 bg-white">
-            <Button
-              variant="solid"
-              color="orange"
-              size="large"
-              className="w-full"
-            >
-              Add to cart
-            </Button>
-          </div>
+          <AddToCartCard />
         </div>
       </div>
 
