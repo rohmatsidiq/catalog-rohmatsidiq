@@ -6,17 +6,15 @@ import "./index.css";
 import { ConfigProvider } from "antd";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: "#009689",
-          },
-        }}
-      >
-        <App />
-      </ConfigProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "red",
+        },
+      }}
+    >
+      <App />
+    </ConfigProvider>
+  </BrowserRouter>
 );
